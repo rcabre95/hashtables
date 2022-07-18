@@ -80,7 +80,7 @@ class DoubleHashTable {
     }
 
     remove(key: string) {
-
+        //somethings wrong with removals. fix it.
         for (let i = 0; i < this.numItems; i++) {
             if (this.table[this.modularHash1(key, i)] === undefined) {
                 continue;
