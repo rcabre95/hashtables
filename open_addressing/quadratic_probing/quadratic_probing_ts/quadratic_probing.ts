@@ -1,6 +1,6 @@
 console.log("----- Results -----\n-------------------\n");
 
-type StringDouble = [string, string] | "deleted"
+type StringDouble = [string, string] | "deleted" | undefined;
 
 class SomeHashTable {
     public table: any[];
@@ -103,7 +103,7 @@ class SomeHashTable {
 
     remove(key: string) {
 
-        for (var i = 0; i < this.mod+1; ++i) {
+        for (var i = 0; i < this.numItems; ++i) {
             if (this.table[this.modularHash(key, i)] === undefined) {
                 continue;
             } else if (this.table[this.modularHash(key, i)] === "deleted") {
@@ -118,7 +118,7 @@ class SomeHashTable {
             }
         }
 
-        if (this.table[this.modularHash(key, i)] !== "deleted") {
+        if (i == this.numItems && this.table[this.modularHash(key, i)] !== "deleted") {
             console.log("\x1b[31m%s\x1b[0m", `Deletion of ${key} has failed.`);
         }
 
